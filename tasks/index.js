@@ -32,13 +32,22 @@ module.exports = function (grunt) {
                     }
                 }
             }
+            var withouts = [];
 
-            if (!this.data.without) {
-                this.data.without = '';
+            if (this.data.without) {
+               withouts.push(this.data.without);
             }
-
+            if (this.data.withoutsCsv) {
+               var splited = this.data.withoutsCsv.split(',');
+               for(var k=0;k<splited.length;k++){
+                   withouts.push(splited[k]);
+               }
+            }
             for (var i = 0; i < vector.length; i++) {
-                sources[i] = vector[i].replace(this.data.without, "");
+                sources[i] =vector[i];
+                for(var j=0;j<withouts.length;j++){
+                    sources[i] =sources[i].replace(withouts[j], "");
+                }
                 grunt.log.ok("source: " + sources[i]);
             }
         } else {
