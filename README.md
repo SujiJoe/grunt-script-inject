@@ -15,6 +15,7 @@ Automatically injects script tags into a page. Nice for auto put script tags in 
             srcs: ['src/frontend/modules/app.js', 'src/frontend/modules/*/*.js', 'src/frontend/modules/*/*/*.js'], //order is important if this sciprt will be concated and minified
             html: 'src/application.html', //file that as the block comment to look for a place to insert the script tags
             without: 'src/' //this script will be used to remove this block of string of script tag file location
+            withoutsCsv: 'src/,src/multi/' //this script will be used to remove multiple block of string of script tag file location
         }
     }
 
